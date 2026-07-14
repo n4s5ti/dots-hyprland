@@ -1,0 +1,45 @@
+{
+	"$schema": "../../Documents/dev/m4gicw0rd/magic-keywords.schema.json",
+	"description": "Local m4gicw0rd configuration. OMP's three built-in magic keywords remain owned by core; this extension adds blast and pip3r.",
+	"keywords": [
+		{
+			"id": "blast",
+			"word": "blast",
+			"notice": "<system-notice>\nThe user's message above contains the **blast** keyword. This policy is warning-only while it matures: never block a tool call or claim impact analysis is a hard gate.\n\n<guidance>\n1. **BLAST FIRST.** Before editing an exported symbol or cross-referenced file, run `pip3r blast <symbol>`, an impact-radius graph tool, `gitnexus impact <symbol>`, or `lsp references`.\n2. **MAP BEFORE MOVING.** If blast radius exceeds five files, report the surface before proceeding.\n3. **DOCTOR BASELINE.** Capture `pip3r doctor --deep --json` before and after edits.\n4. **EVERY CALLSITE.** Include string literals, dynamic imports, barrel re-exports, and test mocks.\n5. **DISCOVER TOOLS FIRST.** Probe for available graph tools before assuming none exist.\n6. **SOFT ESCALATION.** If the runtime repeatedly chooses the wrong tool, tell the operator that OMP supports `/force <tool>` for the next turn. Do not invoke or simulate a forced tool choice automatically.\n</guidance>\n</system-notice>",
+			"gradient": { "stops": 14, "hueStart": 0, "hueEnd": 50 },
+			"controls": {
+				"thinkingBypass": false,
+				"enforceBeforeEdit": true,
+				"planGate": false,
+				"sessionPrefix": { "enabled": false, "value": "[blast] " }
+			},
+			"enabled": true
+		},
+		{
+			"id": "pip3r",
+			"word": "pip3r",
+			"notice": "<system-notice>\nThe user's message above contains the **pip3r** keyword. Pip3r is a zero-install CLI capability router: native plugins own real logic such as graph queries, health checks, generation, and sandboxing; YAML recipes own pure external-CLI delegation. A live inventory is appended to this notice.\n\n<required-response>\n1. Obey the turn-specific host display contract. Interactive mode already renders every recipe and native tool entry exactly once, so do not repeat or summarize it. Headless mode must return every entry exactly once with its route name, availability label, and one-line context.\n2. Do not execute any listed capability unless the user's request independently asks for execution.\n3. If the live inventory is unavailable, say so and show the two manual refresh commands from the fallback. Never invent entries.\n</required-response>\n\n<recipe-authoring>\n1. Inspect the upstream CLI first. Start with `pip3r cook <binary> --name <name>`, `pip3r recipe scaffold <binary> --name <name>`, or `pip3r recipe new <name> --binary <binary> --description \"...\" --executor <system|npx|bunx|uvx>`.\n2. Use a YAML recipe for pure `spawn(binary, args)` delegation. Bake TypeScript into Pip3r only when real transformation, graph, health-check, sandbox, or orchestration logic is required. Never create an npm wrapper solely to forward argv.\n3. Use `system` only for a preinstalled binary; use pinned `npx`, `bunx`, or `uvx` packages for zero-install provisioning. Keep upstream binary/package identifiers exact.\n4. Preserve an upstream name for an unmodified passthrough. A Pip3r-owned custom public route may use one readable leetspeak substitution; do not rename existing routes without an explicit cutover.\n5. Choose passthrough when the upstream CLI has broad subcommands and arbitrary flags. Choose structured commands only for a bounded typed surface. Check native/alias collisions before adding a route.\n6. Put repository-local recipes in `.pip3r/recipes/*.yaml`; put first-party routes that must work from any directory in `SHIPPED_RECIPES`. Validate with `pip3r recipe validate <name>` (or `--all`) and smoke-test `pip3r <name> --help` plus one harmless real command.\n</recipe-authoring>\n\n<progressive-disclosure>\n1. Level 1: use the rendered live inventory in interactive mode; include the same names, availability, and one-line context in headless mode.\n2. Level 2: for a selected native route, inspect `pip3r <route> --help`. For a recipe, use `pip3r recipe list --json` metadata unless its help path is already known to be non-provisioning and non-executing.\n3. Level 3: only when exact native schema is needed, run `pip3r runtime graph explain-command <route> --json` and disclose that command's flags, output contracts, effects, and capabilities.\n4. Never dump every command schema or flag up front. Treat effect/capability metadata as advisory rather than an authorization boundary.\n</progressive-disclosure>\n</system-notice>",
+			"gradient": { "stops": 14, "hueStart": 185, "hueEnd": 285 },
+			"controls": {
+				"thinkingBypass": false,
+				"enforceBeforeEdit": false,
+				"planGate": false,
+				"sessionPrefix": { "enabled": false, "value": "" }
+			},
+			"enabled": true
+		},
+		{
+			"id": "issues",
+			"word": "issues",
+			"notice": "<system-notice>\nThe user's message above contains the **issues** keyword. Multica is the system of record for tracked work.\n\n<multica-contract>\n1. Use Pip3r's `mu1` route for every Multica operation. Prefix each invocation with `pip3r mu1 -- --profile desktop-api.multica.ai`; for issue lists and creation use `--workspace-id a891648f-b3d2-4144-a13c-c58b720e3ca0`, for example `pip3r mu1 -- --profile desktop-api.multica.ai issue create --workspace-id a891648f-b3d2-4144-a13c-c58b720e3ca0`. Never invoke the `multica` binary directly.\n2. Before non-trivial implementation, create or reuse a Multica issue with context, goal, acceptance criteria, and references. Link branches, PRs, and commits to its identifier.\n3. File any bug, dead path, build gap, failed assumption, or verification error discovered outside the active fix immediately. Include file:line, exact reproducer, scope rationale, and discovery context. Check for an existing issue first.\n4. Use priority `urgent` for blockers, `high` for structural problems, `medium` for observable bugs, and `low` for polish or follow-up.\n5. Move work through `backlog`, `todo`, `in_progress`, `in_review`, and `done`; use `blocked` or `cancelled` only when applicable.\n6. Store structured state with `pip3r mu1 -- --profile desktop-api.multica.ai issue metadata`; do not rely on unstructured comments for canonical state.\n</multica-contract>\n</system-notice>",
+			"gradient": { "stops": 14, "hueStart": 290, "hueEnd": 350 },
+			"controls": {
+				"thinkingBypass": false,
+				"enforceBeforeEdit": false,
+				"planGate": false,
+				"sessionPrefix": { "enabled": false, "value": "" }
+			},
+			"enabled": true
+		}
+	]
+}

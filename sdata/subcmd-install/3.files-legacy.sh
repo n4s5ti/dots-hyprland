@@ -18,6 +18,11 @@ case "${SKIP_MISCCONF}" in
     install_dir "dots/.local/share/konsole" "${XDG_DATA_HOME}"/konsole
     ;;
 esac
+# OMP extension configuration
+OMP_AGENT_DIR="${PI_CODING_AGENT_DIR:-${HOME}/.omp/agent}"
+install_file dots/.omp/agent/magic-keywords.json "$OMP_AGENT_DIR/magic-keywords.json"
+install_file dots/.omp/agent/extensions/magic-factory.ts "$OMP_AGENT_DIR/extensions/magic-factory.ts"
+
 
 case "${SKIP_QUICKSHELL}" in
   true) true;;
